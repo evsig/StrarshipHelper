@@ -7,7 +7,7 @@ namespace ds.test.impl
     {
         static void Main(string[] args)
 {
-            Plugins dev = new AdditionPlugin("Плагин сложения");
+            IPlugin dev = new AdditionPlugin("Плагин сложения");
             Action Action2 = dev.Run();
 
             dev = new SubtractionPlugin("Плагин вычитания");

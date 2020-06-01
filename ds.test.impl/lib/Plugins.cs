@@ -5,38 +5,39 @@ using System.Text;
 namespace lib
 {
     // абстрактный класс плагинов
-    abstract class Plugins
+    public class Plugins: PluginFactory
     {
-        public string Name { get; set; }
-
-
-        public Plugins(string n)
+        public Plugins()
         {
-            Name = n;
+        }
+        //todo сделать dictionary(приватный)
+        public override IPlugin GetPlugin(string pluginName)
+        {
+            throw new NotImplementedException();
         }
         // фабричный метод
-        abstract public Action Run();
     }
     // создает плагин сложение
-    class AdditionPlugin : Plugins
+    class AdditionPlugin : BasePlugin, IPlugin
     {
-        public AdditionPlugin(string n) : base(n)
+        public AdditionPlugin()
         { }
 
-        public override Action Run()
+        public override int Run(int input1, int input2)
         {
-            return new AdditionAction();
+            return input1+input2;
         }
     }
     // создает плагин вычитание
-    class SubtractionPlugin : Plugins
+    //public
+    class SubtractionPlugin : BasePlugin, IPlugin
     {
-        public SubtractionPlugin(string n) : base(n)
-        { }
+        public SubtractionPlugin()
+        {}
 
-        public override Action Run()
+        public override int Run(int input1, int input2)
         {
-            return new SubtractionAction();
+            return input1 - input2;
         }
     }
 }
